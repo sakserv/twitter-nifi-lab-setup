@@ -3,6 +3,18 @@
 SCRIPT_NAME=$(basename $0)
 SCRIPT_DIR=$(cd `dirname $0` && pwd)
 
+#
+# Check return codes
+#
+check_rc () {
+  if [ $1 -ne 0 ]; then
+    echo "ERROR"
+    exit 1
+  else
+    echo "SUCCESS"
+  fi
+}
+
 # Get the Ambari admin password from the user
 echo -e "\n### Enter the Ambari admin user password: \c"; read LAB_PW
 
