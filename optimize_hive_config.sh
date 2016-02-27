@@ -4,7 +4,7 @@ SCRIPT_NAME=$(basename $0)
 SCRIPT_DIR=$(cd `dirname $0` && pwd)
 
 # Get the Ambari admin password from the user
-echo -e "\n### Enter the Ambari admin user password: \c" | read LAB_PW
+echo -e "\n### Enter the Ambari admin user password: \c"; read LAB_PW
 
 # Increase the amount of memory available to YARN
 echo -e "\n### Increasing the amount of memory allocated to YARN"
