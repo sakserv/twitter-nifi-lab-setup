@@ -72,7 +72,7 @@ export SERVICE=HIVE
 export AMBARI_HOST=localhost
 export CLUSTER=Sandbox
 curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Stop Hive via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 60
-curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start Hive via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 300
+curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start Hive via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 240
 check_rc $?
 
 # Restart Oozie
@@ -81,7 +81,7 @@ export SERVICE=OOZIE
 export AMBARI_HOST=localhost
 export CLUSTER=Sandbox
 curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Stop Oozie via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 60
-curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start Oozie via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 300
+curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start Oozie via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 120
 check_rc $?
 
 # Restart yarn
@@ -90,16 +90,16 @@ export SERVICE=YARN
 export AMBARI_HOST=localhost
 export CLUSTER=Sandbox
 curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Stop YARN via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 60
-curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start YARN via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 300
+curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start YARN via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 120
 check_rc $?
 
 # Restart Tez
 echo -e "\n### Restarting Tez for configuration changes"
-export SERVICE=HIVE
+export SERVICE=TEZ
 export AMBARI_HOST=localhost
 export CLUSTER=Sandbox
 curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Stop Tez via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 60
-curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start Tez via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 300
+curl -u admin:$LAB_PW -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo": {"context" :"Start Tez via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}'  http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE && sleep 120
 check_rc $?
 
 exit 0
